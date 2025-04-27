@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:sebs_app/core/models/event_model.dart';
-import 'package:sebs_app/core/utils/named_routes.dart';
+import 'package:sebs_app/features/home/presentation/views/event_details_view.dart';
 import 'package:sebs_app/features/home/presentation/views/widgets/card_event_this_month.dart';
 
 class EventThisMonthCardListView extends StatelessWidget {
@@ -17,7 +18,7 @@ class EventThisMonthCardListView extends StatelessWidget {
         itemCount: events.length,
         // reverse: true,
         itemBuilder: (context, index) => GestureDetector(
-          onTap: () => Navigator.pushNamed(arguments: events[index].toJson(), context, NamedRoutes.detailScreen),
+          onTap: () => GoRouter.of(context).push(extra: events[index].toJson(), EventDetailsView.path),
           child: CardEventThisMonth(eventModel: events[index]),
         ),
       ),

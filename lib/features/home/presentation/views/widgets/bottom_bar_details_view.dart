@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:sebs_app/core/models/event_model.dart';
 import 'package:sebs_app/core/utils/colors.dart';
-import 'package:sebs_app/core/utils/named_routes.dart';
+import 'package:sebs_app/features/booking/presentation/views/ticket_view.dart';
 
 class BottomBarDetailsView extends StatelessWidget {
   const BottomBarDetailsView({super.key, required this.eventModel});
@@ -49,10 +50,9 @@ class BottomBarDetailsView extends StatelessWidget {
               ],
             ),
             ElevatedButton(
-              onPressed: () => Navigator.pushNamed(
-                context,
-                NamedRoutes.ticketScreen,
-                arguments: eventModel.toJson(),
+              onPressed: () => GoRouter.of(context).push(
+                TicketView.path,
+                extra: eventModel.toJson(),
               ),
               style: ElevatedButton.styleFrom(
                   backgroundColor: AppColors.primaryColor,
