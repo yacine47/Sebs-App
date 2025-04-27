@@ -7,13 +7,15 @@ import 'package:sebs_app/features/auth/presentation/view_models/sign_up/sign_up_
 import 'package:sebs_app/features/auth/presentation/views/login_view.dart';
 import 'package:sebs_app/features/auth/presentation/views/sign_up_view.dart';
 import 'package:sebs_app/features/booking/presentation/views/ticket_view.dart';
+import 'package:sebs_app/features/home/presentation/view_models/get_last_month_event/get_last_month_event_cubit.dart';
+import 'package:sebs_app/features/home/presentation/view_models/get_popular_event/get_popular_event_cubit.dart';
 import 'package:sebs_app/features/home/presentation/views/event_details_view.dart';
 import 'package:sebs_app/features/home/presentation/views/home_view.dart';
 import 'package:sebs_app/features/splash/presentation/views/splash_view.dart';
 
 abstract class AppRouter {
   static final router = GoRouter(
-    initialLocation: LoginView.path,
+    initialLocation: SplashView.path,
     routes: [
       GoRoute(
         path: SplashView.path,
@@ -21,7 +23,13 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: HomeView.path,
-        builder: (context, state) => const HomeView(),
+        builder: (context, state) => MultiBlocProvider(
+          providers: [
+            BlocProvider.value(value: getIt.get<GetLastMonthEventCubit>()..getLastMonthEvent()),
+            BlocProvider.value(value: getIt.get<GetPopularEventCubit>()..getPopularEvent()),
+          ],
+          child: const HomeView(),
+        ),
       ),
       GoRoute(
         path: LoginView.path,

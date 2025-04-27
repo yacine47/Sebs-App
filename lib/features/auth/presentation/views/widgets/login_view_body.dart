@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:sebs_app/core/utils/app_colors.dart';
 import 'package:sebs_app/core/widgets/app_styles.dart';
 import 'package:sebs_app/core/widgets/custom_button.dart';
 import 'package:sebs_app/core/widgets/custom_text_form_field.dart';
@@ -9,6 +8,7 @@ import 'package:sebs_app/core/widgets/err_message_widget_auth.dart';
 import 'package:sebs_app/features/auth/presentation/view_models/login/login_cubit.dart';
 import 'package:sebs_app/features/auth/presentation/views/sign_up_view.dart';
 import 'package:sebs_app/features/auth/presentation/views/widgets/other_option.dart';
+import 'package:sebs_app/features/home/presentation/views/home_view.dart';
 
 class LoginViewBody extends StatefulWidget {
   const LoginViewBody({super.key});
@@ -27,6 +27,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
     return BlocConsumer<LoginCubit, LoginState>(
       listener: (context, state) {
         if (state is LoginSuccess) {
+          GoRouter.of(context).go(HomeView.path);
           // navigateToHomeView(state, context);
         }
       },
@@ -52,29 +53,41 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height * .07),
                 CustomTextFormField(
+                  onSaved: (value) => BlocProvider.of<LoginCubit>(context).userModel.email = value,
                   hint: 'Email',
                   prefixIcon: Icons.email_rounded,
-                  // onSaved: (value) => BlocProvider.of<LoginCubit>(context).userModel.email = value,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter your email';
+                    }
+                    // Simple email regex
+                    bool isValidEmail = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(value);
+                    if (!isValidEmail) {
+                      return 'Please enter a valid email';
+                    }
+                    return null;
+                  },
                 ),
+
                 const SizedBox(height: 22),
                 CustomTextFormField(
                   hint: 'Password',
                   prefixIcon: Icons.lock_rounded,
                   isPassword: true,
-                  // onSaved: (value) => BlocProvider.of<LoginCubit>(context).userModel.password = value,
+                  onSaved: (value) => BlocProvider.of<LoginCubit>(context).userModel.password = value,
                 ),
                 const SizedBox(height: 22),
-                Align(
-                  alignment: Alignment.center,
-                  child: Text(
-                    'Forgot the password?',
-                    textAlign: TextAlign.center,
-                    style: Styles.style16.copyWith(
-                      color: AppColors.primaryColor,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
+                // Align(
+                //   alignment: Alignment.center,
+                //   child: Text(
+                //     'Forgot the password?',
+                //     textAlign: TextAlign.center,
+                //     style: Styles.style16.copyWith(
+                //       color: AppColors.primaryColor,
+                //       fontWeight: FontWeight.bold,
+                //     ),
+                //   ),
+                // ),
                 const SizedBox(height: 22),
                 CustomButton(
                   isLoadingState: state is LoginLoading,
@@ -82,7 +95,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                   onPressed: () {
                     if (formKey.currentState!.validate()) {
                       formKey.currentState!.save();
-                      // BlocProvider.of<LoginCubit>(context).login();
+                      BlocProvider.of<LoginCubit>(context).login();
                     } else {
                       autovalidateMode = AutovalidateMode.always;
                       setState(() {});

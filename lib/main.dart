@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:sebs_app/core/utils/app_router.dart';
+import 'package:sebs_app/core/utils/service_locator.dart';
 import 'package:sebs_app/core/utils/theme.dart';
 
 void main() {
+  setup();
   runApp(const MyApp());
 }
 

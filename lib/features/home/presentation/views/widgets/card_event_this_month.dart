@@ -24,7 +24,7 @@ class CardEventThisMonth extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(12),
             child: Image.network(
-              eventModel.image,
+              eventModel.image!,
               fit: BoxFit.cover,
               width: 60,
               height: double.infinity,
@@ -35,7 +35,7 @@ class CardEventThisMonth extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                eventModel.title,
+                eventModel.title!,
                 style: const TextStyle(fontWeight: FontWeight.w500),
               ),
               const SizedBox(height: 4),
@@ -44,7 +44,7 @@ class CardEventThisMonth extends StatelessWidget {
                   Icon(Icons.place_outlined, size: 14),
                   const SizedBox(width: 4),
                   Text(
-                    eventModel.location,
+                    eventModel.location!,
                     style: const TextStyle(
                       fontSize: 12,
                       color: AppColors.greyTextColor,
@@ -75,10 +75,10 @@ class CardEventThisMonth extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  eventModel.date.split(" ")[0],
+                  eventModel.date.toString(),
                 ),
                 Text(
-                  eventModel.date.split(" ")[1],
+                  eventModel.date.toString(),
                   style: const TextStyle(
                     color: AppColors.primaryColor,
                   ),

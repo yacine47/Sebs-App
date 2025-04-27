@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:sebs_app/core/utils/app_assets.dart';
+import 'package:sebs_app/core/services/secure_storage_service.dart';
+import 'package:sebs_app/core/utils/service_locator.dart';
+import 'package:sebs_app/features/auth/presentation/views/login_view.dart';
 import 'package:sebs_app/features/auth/presentation/views/widgets/custom_logo.dart';
 import 'package:sebs_app/features/home/presentation/views/home_view.dart';
 
@@ -17,12 +18,24 @@ class _SplashViewBodyState extends State<SplashViewBody> {
   @override
   void initState() {
     super.initState();
-    // _navigateToInitialView();
+    _navigateToInitialView();
     Future.delayed(Duration(seconds: 1), () {
-      // initAuthState();
+      initAuthState();
 
-      GoRouter.of(context).go(HomeView.path);
+      GoRouter.of(context).go(initView);
     });
+  }
+
+  Future<void> _navigateToInitialView() async {
+    initView = await initialLocation();
+
+    if (!mounted) return;
+  }
+
+  void initAuthState() {
+    if (initView == HomeView.path) {
+      // BlocProvider.value(value: getIt.get<AuthCubit>()..refresh(true));
+    }
   }
 
   @override
@@ -32,5 +45,12 @@ class _SplashViewBodyState extends State<SplashViewBody> {
         width: MediaQuery.sizeOf(context).width * .8,
       ),
     );
+  }
+
+  Future<String> initialLocation() async {
+    SecureStorageService? secureStorageService = getIt.get<SecureStorageService>();
+    String? token = await secureStorageService.getToken();
+    print(token);
+    return token == null ? LoginView.path : HomeView.path;
   }
 }

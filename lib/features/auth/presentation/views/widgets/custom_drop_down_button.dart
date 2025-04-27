@@ -17,12 +17,12 @@ class CustomDropDownButton extends StatelessWidget {
         iconEnabledColor: AppColors.hintColorTextField,
         items: const [
           DropdownMenuItem(
-            value: 'client',
-            child: Text('Client'),
+            value: 'simple_user',
+            child: Text('Simple User'),
           ),
           DropdownMenuItem(
-            value: 'seller',
-            child: Text('Seller'),
+            value: 'event_manager',
+            child: Text('Event Manager'),
           ),
         ],
         isExpanded: true,

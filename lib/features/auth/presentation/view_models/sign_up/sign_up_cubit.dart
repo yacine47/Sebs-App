@@ -12,12 +12,12 @@ class SignUpCubit extends Cubit<SignUpState> {
 
   final AuthRepo authRepo;
 
-  late UserModel user;
+  UserModel userModel = UserModel();
 
   Future<void> signUp() async {
     emit(SignUpLoading());
 
-    var result = await authRepo.register(user);
+    var result = await authRepo.register(userModel);
 
     result.fold(
       (failure) => emit(SignUpFailure(failure.error)),

@@ -35,7 +35,7 @@ class CardPopularEvent extends StatelessWidget {
           child: Stack(
             children: [
               Image.network(
-                eventModel.image,
+                eventModel.image!,
                 fit: BoxFit.cover,
                 width: double.infinity,
                 height: double.infinity,
@@ -55,10 +55,10 @@ class CardPopularEvent extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        eventModel.date.split(" ")[0],
+                        eventModel.date.toString(),
                       ),
                       Text(
-                        eventModel.date.split(" ")[1],
+                        eventModel.date.toString(),
                         style: const TextStyle(
                           color: AppColors.primaryColor,
                         ),
@@ -88,7 +88,7 @@ class CardPopularEvent extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    eventModel.title,
+                    eventModel.title!,
                     style: const TextStyle(fontWeight: FontWeight.w500),
                   ),
                   const SizedBox(height: 6),
@@ -100,7 +100,7 @@ class CardPopularEvent extends StatelessWidget {
                       ),
                       const SizedBox(width: 4),
                       Text(
-                        eventModel.location,
+                        eventModel.location!,
                         style: const TextStyle(
                           fontSize: 12,
                           color: AppColors.greyTextColor,

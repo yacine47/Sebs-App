@@ -10,6 +10,7 @@ import 'package:sebs_app/features/auth/presentation/view_models/sign_up/sign_up_
 import 'package:sebs_app/features/auth/presentation/views/login_view.dart';
 import 'package:sebs_app/features/auth/presentation/views/widgets/custom_drop_down_button.dart';
 import 'package:sebs_app/features/auth/presentation/views/widgets/other_option.dart';
+import 'package:sebs_app/features/home/presentation/views/home_view.dart';
 
 class SignUpViewBody extends StatefulWidget {
   const SignUpViewBody({super.key});
@@ -19,6 +20,7 @@ class SignUpViewBody extends StatefulWidget {
 }
 
 class _SignUpViewBodyState extends State<SignUpViewBody> {
+  String? password; // <- ADD THIS
   String? valueRole;
   GlobalKey<FormState> formKey = GlobalKey();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
@@ -28,7 +30,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
     return BlocConsumer<SignUpCubit, SignUpState>(
       listener: (context, state) {
         if (state is SignUpSuccess) {
-          GoRouter.of(context).push(LoginView.path);
+          GoRouter.of(context).push(HomeView.path);
         }
       },
       builder: (context, state) {
@@ -41,7 +43,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: 28),
-                // const GoBackButton(),
+                //  const GoBackButton(),
                 const SizedBox(height: 24),
                 Text(
                   'Welcome !\nCreate your Account',
@@ -58,15 +60,14 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                     Flexible(
                       child: CustomTextFormField(
                         prefixIcon: Icons.person,
-
-                        // onSaved: (value) => BlocProvider.of<SignUpCubit>(context).userModel.firstName = value,
+                        onSaved: (value) => BlocProvider.of<SignUpCubit>(context).userModel.firstName = value,
                         hint: 'First Name',
                       ),
                     ),
                     const SizedBox(width: 18),
                     Flexible(
                       child: CustomTextFormField(
-                        // onSaved: (value) => BlocProvider.of<SignUpCubit>(context).userModel.lastName = value,
+                        onSaved: (value) => BlocProvider.of<SignUpCubit>(context).userModel.lastName = value,
                         hint: 'Last Name',
                         prefixIcon: Icons.person,
                       ),
@@ -75,29 +76,51 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                 ),
                 const SizedBox(height: 16),
                 CustomTextFormField(
-                  // onSaved: (value) => BlocProvider.of<SignUpCubit>(context).userModel.email = value,
+                  onSaved: (value) => BlocProvider.of<SignUpCubit>(context).userModel.email = value,
                   hint: 'Email',
                   prefixIcon: Icons.email_rounded,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter your email';
+                    }
+                    // Simple email regex
+                    bool isValidEmail = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(value);
+                    if (!isValidEmail) {
+                      return 'Please enter a valid email';
+                    }
+                    return null;
+                  },
                 ),
+
                 SizedBox(height: spaceBetweenTextField),
                 CustomTextFormField(
-                  // onSaved: (value) => BlocProvider.of<SignUpCubit>(context).userModel.password = value,
+                  onSaved: (value) => BlocProvider.of<SignUpCubit>(context).userModel.password = value,
                   hint: 'Password',
+                  onChanged: (value) => password = value, // <- STORE IT ON CHANGE
                   prefixIcon: Icons.lock_rounded,
                   isPassword: true,
                 ),
                 SizedBox(height: spaceBetweenTextField),
                 CustomTextFormField(
-                  // onSaved: (value) => BlocProvider.of<SignUpCubit>(context).userModel.passwordConfirmation = value,
+                  onSaved: (value) => BlocProvider.of<SignUpCubit>(context).userModel.passwordConfirmation = value,
                   hint: 'Confirm Password',
-                  // onSaved: (value) => BlocProvider.of<SignUpCubit>(context).userModel.password = value,
                   prefixIcon: Icons.lock_rounded,
                   isPassword: true,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please confirm your password';
+                    } else if (value != password) {
+                      // <- COMPARE TO LOCAL PASSWORD
+                      return 'Passwords do not match';
+                    }
+                    return null;
+                  },
                 ),
+
                 SizedBox(height: spaceBetweenTextField),
                 CustomDropDownButton(
                   valueRole: valueRole,
-                  // onSaved: (value) => BlocProvider.of<SignUpCubit>(context).userModel.role = value,
+                  onSaved: (value) => BlocProvider.of<SignUpCubit>(context).userModel.role = value,
                   onChanged: (value) {
                     valueRole = value;
                     setState(() {});
@@ -110,7 +133,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                   onPressed: () async {
                     if (formKey.currentState!.validate()) {
                       formKey.currentState!.save();
-                      // await BlocProvider.of<SignUpCubit>(context).SignUp();
+                      await BlocProvider.of<SignUpCubit>(context).signUp();
                     } else {
                       autovalidateMode = AutovalidateMode.always;
                     }

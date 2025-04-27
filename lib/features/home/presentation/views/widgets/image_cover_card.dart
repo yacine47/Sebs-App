@@ -26,7 +26,7 @@ class ImageCoverCard extends StatelessWidget {
             image: DecorationImage(
               fit: BoxFit.cover,
               image: NetworkImage(
-                eventModel.image,
+                eventModel.image!,
               ),
             ),
           ),
@@ -46,10 +46,10 @@ class ImageCoverCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  eventModel.date.split(" ")[0],
+                  eventModel.date.toString(),
                 ),
                 Text(
-                  eventModel.date.split(" ")[1],
+                  eventModel.date.toString(),
                   style: const TextStyle(
                     color: AppColors.primaryColor,
                   ),

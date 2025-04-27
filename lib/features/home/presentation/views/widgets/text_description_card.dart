@@ -20,7 +20,7 @@ class TextDescriptionCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    eventModel.title,
+                    eventModel.title!,
                     style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
                   ),
                   const SizedBox(height: 6),
@@ -32,7 +32,7 @@ class TextDescriptionCard extends StatelessWidget {
                       ),
                       const SizedBox(width: 4),
                       Text(
-                        eventModel.location,
+                        eventModel.location!,
                         style: const TextStyle(color: AppColors.greyTextColor),
                       )
                     ],

@@ -38,11 +38,11 @@ class UserModel {
 
   Map<String, dynamic> toJson() {
     return {
-      'first_name': firstName,
-      'last_name': lastName,
+      'name': '$firstName $lastName',
       'email': email,
       'role': role,
       'password': password,
+      'password_confirmation': password,
     };
   }
 }

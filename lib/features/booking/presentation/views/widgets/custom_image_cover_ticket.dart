@@ -15,7 +15,7 @@ class CustomImageCoverTicket extends StatelessWidget {
             height: 250,
             width: double.infinity,
             child: Image.network(
-              eventModel.image,
+              eventModel.image!,
               fit: BoxFit.cover,
             ),
           ),

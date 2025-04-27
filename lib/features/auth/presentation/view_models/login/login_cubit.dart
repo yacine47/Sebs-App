@@ -11,7 +11,7 @@ class LoginCubit extends Cubit<LoginState> {
   LoginCubit(this.authRepo) : super(LoginInitial());
 
   final AuthRepo authRepo;
-  late UserModel userModel;
+  UserModel userModel = UserModel();
   Future<void> login() async {
     emit(LoginLoading());
 

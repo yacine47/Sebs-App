@@ -15,7 +15,7 @@ class AuthRepoImpl implements AuthRepo {
   Future<Either<Failure, String>> login({required String email, required String password}) async {
     try {
       Map<String, dynamic> response = await apiService.post(
-        endPoint: 'auth/login',
+        endPoint: 'login',
         data: {
           'email': email,
           'password': password,
@@ -34,7 +34,7 @@ class AuthRepoImpl implements AuthRepo {
   Future<Either<Failure, String>> register(UserModel user) async {
     try {
       Map<String, dynamic> response = await apiService.post(
-        endPoint: 'auth/register',
+        endPoint: 'register',
         data: user.toJson(),
       );
 

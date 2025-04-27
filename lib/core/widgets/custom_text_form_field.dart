@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sebs_app/core/functions/validate_required_field.dart';
 import 'package:sebs_app/core/utils/app_colors.dart';
 
 class CustomTextFormField extends StatefulWidget {
@@ -50,7 +51,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       autofocus: widget.autofocus,
       onFieldSubmitted: widget.onFieldSubmitted,
       onSaved: widget.onSaved,
-      validator: widget.validator,
+      validator: widget.validator ?? (value) => validateRequiredField(value, widget.hint),
       onChanged: widget.onChanged,
       keyboardType: widget.keyboardType,
       obscureText: widget.isPassword ? _obscureText : false, // <-- important!
