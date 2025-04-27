@@ -17,11 +17,11 @@ class HomeViewBody extends StatelessWidget {
         create: (_) => EventCubit()..loadEventData(),
         child: Column(
           children: [
-            HeaderHomeView(),
+            const HeaderHomeView(),
             // const SizedBox(height: 24),
             // _buildSearch(),
             const SizedBox(height: 24),
-            CustomTitle(
+            const CustomTitle(
               title: "Popular Event",
             ),
             const SizedBox(height: 16),
@@ -37,7 +37,7 @@ class HomeViewBody extends StatelessWidget {
               },
             ),
             const SizedBox(height: 24),
-            CustomTitle(
+            const CustomTitle(
               title: "Event This Month",
             ),
 

@@ -15,7 +15,7 @@ class LoginCubit extends Cubit<LoginState> {
   Future<void> login() async {
     emit(LoginLoading());
 
-    var result = await authRepo.login(
+    final result = await authRepo.login(
       email: userModel.email!,
       password: userModel.password!,
     );
@@ -23,7 +23,7 @@ class LoginCubit extends Cubit<LoginState> {
     result.fold(
       (failure) => emit(LoginFailure(failure.error)),
       (token) {
-        SecureStorageService? secureStorageService = getIt.get<SecureStorageService>();
+        final SecureStorageService secureStorageService = getIt.get<SecureStorageService>();
         secureStorageService.saveToken(token);
 
         emit(LoginSuccess());

@@ -61,7 +61,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                       return 'Please enter your email';
                     }
                     // Simple email regex
-                    bool isValidEmail = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(value);
+                    final bool isValidEmail = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(value);
                     if (!isValidEmail) {
                       return 'Please enter a valid email';
                     }

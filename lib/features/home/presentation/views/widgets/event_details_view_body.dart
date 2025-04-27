@@ -18,7 +18,7 @@ class EventDetailsViewBody extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 24),
               child: Column(
                 children: [
-                  AppBarDetailsView(),
+                  const AppBarDetailsView(),
                   const SizedBox(height: 24),
                   ImageCoverCard(eventModel: eventModel),
                   const SizedBox(height: 16),

@@ -10,7 +10,6 @@ class ErrMessageWidgetAuth extends StatelessWidget {
   Widget build(BuildContext context) {
     return isLoading
         ? Align(
-            alignment: Alignment.center,
             child: Text(
               state.errMessage,
               style: Styles.style14.copyWith(color: Colors.red),

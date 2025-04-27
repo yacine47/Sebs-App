@@ -12,7 +12,7 @@ class GetPopularEventCubit extends Cubit<GetPopularEventState> {
   Future<void> getPopularEvent() async {
     emit(GetPopularEventLoading());
 
-    var result = await homeRepo.fetchDataPopularEvents();
+    final result = await homeRepo.fetchDataPopularEvents();
 
     result.fold(
       (failure) => emit(GetPopularEventFailure(failure.error)),

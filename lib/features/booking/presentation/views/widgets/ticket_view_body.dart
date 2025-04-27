@@ -12,7 +12,7 @@ class TicketViewBody extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 24),
       child: Column(
         children: [
-          AppBarTicketView(),
+          const AppBarTicketView(),
           const SizedBox(height: 30),
           TicketDetailsCard(eventModel: eventModel),
         ],

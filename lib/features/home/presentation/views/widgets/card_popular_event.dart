@@ -22,7 +22,7 @@ class CardPopularEvent extends StatelessWidget {
     );
   }
 
-  _buildCardImage() => Container(
+  Container _buildCardImage() => Container(
         width: 250,
         height: 250,
         padding: const EdgeInsets.all(10),
@@ -51,7 +51,6 @@ class CardPopularEvent extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
@@ -72,7 +71,7 @@ class CardPopularEvent extends StatelessWidget {
         ),
       );
 
-  _buildCardDesc() => Positioned(
+  Positioned _buildCardDesc() => Positioned(
         bottom: 0,
         right: 0,
         left: 0,
@@ -94,7 +93,7 @@ class CardPopularEvent extends StatelessWidget {
                   const SizedBox(height: 6),
                   Row(
                     children: [
-                      Icon(
+                      const Icon(
                         Icons.place_outlined,
                         size: 14,
                       ),
@@ -118,7 +117,7 @@ class CardPopularEvent extends StatelessWidget {
                   color: AppColors.primaryLightColor,
                   borderRadius: BorderRadius.circular(8),
                 ),
-                child: Icon(
+                child: const Icon(
                   Icons.place_outlined,
                   size: 18,
                 ),

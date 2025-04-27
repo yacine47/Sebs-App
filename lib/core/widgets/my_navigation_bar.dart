@@ -17,7 +17,7 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
       animationDuration: const Duration(seconds: 3),
       labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
       backgroundColor: AppColors.whiteColor,
-      destinations: [
+      destinations: const [
         NavigationDestination(
           icon: Icon(
             Icons.place_outlined,

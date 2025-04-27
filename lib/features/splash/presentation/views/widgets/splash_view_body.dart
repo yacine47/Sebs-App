@@ -19,7 +19,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
   void initState() {
     super.initState();
     _navigateToInitialView();
-    Future.delayed(Duration(seconds: 1), () {
+    Future.delayed(const Duration(seconds: 1), () {
       initAuthState();
 
       GoRouter.of(context).go(initView);
@@ -48,8 +48,8 @@ class _SplashViewBodyState extends State<SplashViewBody> {
   }
 
   Future<String> initialLocation() async {
-    SecureStorageService? secureStorageService = getIt.get<SecureStorageService>();
-    String? token = await secureStorageService.getToken();
+    final SecureStorageService secureStorageService = getIt.get<SecureStorageService>();
+    final String? token = await secureStorageService.getToken();
     print(token);
     return token == null ? LoginView.path : HomeView.path;
   }

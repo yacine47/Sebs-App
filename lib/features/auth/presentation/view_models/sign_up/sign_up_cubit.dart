@@ -17,12 +17,12 @@ class SignUpCubit extends Cubit<SignUpState> {
   Future<void> signUp() async {
     emit(SignUpLoading());
 
-    var result = await authRepo.register(userModel);
+    final result = await authRepo.register(userModel);
 
     result.fold(
       (failure) => emit(SignUpFailure(failure.error)),
       (token) {
-        SecureStorageService? secureStorageService = getIt.get<SecureStorageService>();
+        final SecureStorageService secureStorageService = getIt.get<SecureStorageService>();
         secureStorageService.saveToken(token);
 
         emit(SignUpSuccess());

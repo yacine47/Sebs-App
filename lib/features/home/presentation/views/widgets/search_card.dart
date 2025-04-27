@@ -15,14 +15,14 @@ class SearchCard extends StatelessWidget {
         borderRadius: BorderRadius.all(Radius.circular(50)),
         color: AppColors.whiteColor,
       ),
-      child: Row(
+      child: const Row(
         children: [
           Icon(
             Icons.search_rounded,
             size: 16,
           ),
-          const SizedBox(width: 8),
-          const Text(
+          SizedBox(width: 8),
+          Text(
             "Search event...",
             style: TextStyle(color: AppColors.greyTextColor, fontWeight: FontWeight.w400),
           )

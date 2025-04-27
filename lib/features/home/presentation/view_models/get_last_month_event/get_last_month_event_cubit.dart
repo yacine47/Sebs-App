@@ -12,7 +12,7 @@ class GetLastMonthEventCubit extends Cubit<GetLastMonthEventState> {
   Future<void> getLastMonthEvent() async {
     emit(GetLastMonthEventLoading());
 
-    var result = await homeRepo.fetchDataLastMonth();
+    final result = await homeRepo.fetchDataLastMonth();
 
     result.fold(
       (failure) => emit(GetLastMonthEventFailure(failure.error)),

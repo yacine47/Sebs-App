@@ -9,8 +9,8 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
-    return Scaffold(
-      appBar: const PreferredSize(preferredSize: Size(0, 0), child: CustomAppBar()),
+    return const Scaffold(
+      appBar: PreferredSize(preferredSize: Size(0, 0), child: CustomAppBar()),
       // bottomNavigationBar: const ClipRRect(
       //   borderRadius: BorderRadius.only(
       //     topLeft: Radius.circular(16),

@@ -26,7 +26,7 @@ class TextDescriptionCard extends StatelessWidget {
                   const SizedBox(height: 6),
                   Row(
                     children: [
-                      Icon(
+                      const Icon(
                         Icons.place_outlined,
                         size: 16,
                       ),

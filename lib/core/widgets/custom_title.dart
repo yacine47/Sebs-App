@@ -20,7 +20,7 @@ class CustomTitle extends StatelessWidget {
         children: [
           Text(
             title,
-            style: TextStyle(
+            style: const TextStyle(
               fontWeight: FontWeight.w500,
               fontSize: 16,
             ),
@@ -28,7 +28,7 @@ class CustomTitle extends StatelessWidget {
           if (onTap != null)
             GestureDetector(
               onTap: onTap,
-              child: Text(
+              child: const Text(
                 "View All",
                 style: TextStyle(
                   fontWeight: FontWeight.w400,

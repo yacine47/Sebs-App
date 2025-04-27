@@ -21,14 +21,14 @@ class ApiService {
   }
 
   Future<dynamic> get({required String endPoint}) async {
-    SecureStorageService? secureStorageService = getIt.get<SecureStorageService>();
-    String? token = await secureStorageService.getToken();
+    final SecureStorageService secureStorageService = getIt.get<SecureStorageService>();
+    final String? token = await secureStorageService.getToken();
 
     if (token == null) {
-      Response response = await _dio.get('$baseUrl$endPoint');
+      final Response response = await _dio.get('$baseUrl$endPoint');
       return response.data;
     }
-    Response response = await _dio.get('$baseUrl$endPoint',
+    final Response response = await _dio.get('$baseUrl$endPoint',
         options: Options(headers: {
           'authorization': 'Bearer $token',
         }));
@@ -37,10 +37,10 @@ class ApiService {
   }
 
   dynamic post({required String endPoint, required Object data}) async {
-    SecureStorageService? secureStorageService = getIt.get<SecureStorageService>();
-    String? token = await secureStorageService.getToken();
+    final SecureStorageService secureStorageService = getIt.get<SecureStorageService>();
+    final String? token = await secureStorageService.getToken();
     if (token == null) {
-      Response response = await _dio.post(
+      final Response response = await _dio.post(
         '$baseUrl$endPoint',
         data: data,
       );
@@ -48,7 +48,7 @@ class ApiService {
       return response.data;
     }
 
-    Response response = await _dio.post(
+    final Response response = await _dio.post(
       '$baseUrl$endPoint',
       data: data,
       options: Options(
@@ -61,15 +61,15 @@ class ApiService {
   }
 
   Future<Map<String, dynamic>> put({required String endPoint, required Object data}) async {
-    SecureStorageService? secureStorageService = getIt.get<SecureStorageService>();
-    String? token = await secureStorageService.getToken();
+    final SecureStorageService secureStorageService = getIt.get<SecureStorageService>();
+    final String? token = await secureStorageService.getToken();
     if (token == null) {
-      Response response = await _dio.put('$baseUrl$endPoint', data: data);
+      final Response response = await _dio.put('$baseUrl$endPoint', data: data);
 
       return response.data;
     }
 
-    Response response = await _dio.put('$baseUrl$endPoint',
+    final Response response = await _dio.put('$baseUrl$endPoint',
         data: data,
         options: Options(
           headers: {
@@ -80,15 +80,15 @@ class ApiService {
   }
 
   Future<Map<String, dynamic>> delete({required String endPoint, required Object data}) async {
-    SecureStorageService? secureStorageService = getIt.get<SecureStorageService>();
-    String? token = await secureStorageService.getToken();
+    final SecureStorageService secureStorageService = getIt.get<SecureStorageService>();
+    final String? token = await secureStorageService.getToken();
     if (token == null) {
-      Response response = await _dio.delete('$baseUrl$endPoint', data: data);
+      final Response response = await _dio.delete('$baseUrl$endPoint', data: data);
 
       return response.data;
     }
 
-    Response response = await _dio.delete('$baseUrl$endPoint',
+    final Response response = await _dio.delete('$baseUrl$endPoint',
         data: data,
         options: Options(
           headers: {'authorization': 'Bearer $token'},

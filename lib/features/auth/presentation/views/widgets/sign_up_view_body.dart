@@ -7,7 +7,6 @@ import 'package:sebs_app/core/widgets/custom_button.dart';
 import 'package:sebs_app/core/widgets/custom_text_form_field.dart';
 import 'package:sebs_app/core/widgets/err_message_widget_auth.dart';
 import 'package:sebs_app/features/auth/presentation/view_models/sign_up/sign_up_cubit.dart';
-import 'package:sebs_app/features/auth/presentation/views/login_view.dart';
 import 'package:sebs_app/features/auth/presentation/views/widgets/custom_drop_down_button.dart';
 import 'package:sebs_app/features/auth/presentation/views/widgets/other_option.dart';
 import 'package:sebs_app/features/home/presentation/views/home_view.dart';
@@ -84,7 +83,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                       return 'Please enter your email';
                     }
                     // Simple email regex
-                    bool isValidEmail = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(value);
+                    final bool isValidEmail = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(value);
                     if (!isValidEmail) {
                       return 'Please enter a valid email';
                     }

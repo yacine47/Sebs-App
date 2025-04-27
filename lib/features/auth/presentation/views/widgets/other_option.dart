@@ -11,7 +11,6 @@ class OtherOption extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: Alignment.center,
       child: RichText(
         text: TextSpan(
             text: '$text  ',

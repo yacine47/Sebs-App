@@ -95,7 +95,7 @@ class EventModel extends Equatable {
         "updated_at": updatedAt?.toIso8601String(),
         "category": category?.toJson(),
         "event_manager": eventManager?.toJson(),
-        "reviews": reviews.map((x) => x?.toJson()).toList(),
+        "reviews": reviews.map((x) => x.toJson()).toList(),
       };
 
   @override

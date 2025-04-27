@@ -12,7 +12,6 @@ class Themes {
   static final ThemeData lightTheme = ThemeData(
     colorScheme: ColorScheme.fromSeed(
       seedColor: AppColors.primaryColor,
-      brightness: Brightness.light,
     ),
     scaffoldBackgroundColor: AppColors.backgroundColor,
     appBarTheme: AppBarTheme(
@@ -42,7 +41,7 @@ class Themes {
       labelSmall: lightText,
     ),
     useMaterial3: true, // Enable Material 3 (optional but recommended)
-    navigationBarTheme: NavigationBarThemeData(
+    navigationBarTheme: const NavigationBarThemeData(
       indicatorColor: AppColors.whiteColor,
       backgroundColor: AppColors.primaryColor,
     ),

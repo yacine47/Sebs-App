@@ -44,7 +44,7 @@ class TicketDetailsCard extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      TitleValueCard(title: "Name", value: "Muhammad Ridhoi"),
+                      const TitleValueCard(title: "Name", value: "Muhammad Ridhoi"),
                       TitleValueCard(title: "Date", value: "${eventModel.date} 2022"),
                     ],
                   ),
@@ -53,7 +53,7 @@ class TicketDetailsCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       TitleValueCard(title: "Date", value: "${eventModel.date} 2022"),
-                      TitleValueCard(title: "Seat", value: "UNOJI B12"),
+                      const TitleValueCard(title: "Seat", value: "UNOJI B12"),
                     ],
                   ),
                   const SizedBox(height: 32),
@@ -66,7 +66,6 @@ class TicketDetailsCard extends StatelessWidget {
                   ),
                   const SizedBox(height: 24),
                   Align(
-                    alignment: Alignment.center,
                     child: Image.asset(
                       "assets/images/barcode.png",
                       height: 70,

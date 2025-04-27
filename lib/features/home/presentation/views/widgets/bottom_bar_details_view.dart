@@ -21,17 +21,17 @@ class BottomBarDetailsView extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Column(
+            const Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
+                Text(
                   "Total Price",
                   style: TextStyle(fontSize: 12, color: AppColors.greyTextColor),
                 ),
-                const SizedBox(height: 6),
+                SizedBox(height: 6),
                 Row(
-                  children: const [
+                  children: [
                     Text(
                       "\$100",
                       style: TextStyle(

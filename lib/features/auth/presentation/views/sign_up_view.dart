@@ -6,7 +6,7 @@ class SignUpView extends StatelessWidget {
   static String path = '/SignUpView';
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: SafeArea(
         child: SignUpViewBody(),
       ),

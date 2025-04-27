@@ -41,7 +41,7 @@ class CardEventThisMonth extends StatelessWidget {
               const SizedBox(height: 4),
               Row(
                 children: [
-                  Icon(Icons.place_outlined, size: 14),
+                  const Icon(Icons.place_outlined, size: 14),
                   const SizedBox(width: 4),
                   Text(
                     eventModel.location!,
@@ -71,7 +71,6 @@ class CardEventThisMonth extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
             ),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
