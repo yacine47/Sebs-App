@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sebs_app/core/utils/colors.dart';
+import 'package:sebs_app/core/utils/app_colors.dart';
 import 'package:sebs_app/core/models/event_model.dart';
 import 'package:sebs_app/features/home/presentation/views/widgets/stack_participant.dart';
 

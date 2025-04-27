@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sebs_app/core/utils/colors.dart';
+import 'package:sebs_app/core/utils/app_colors.dart';
 
 class CustomTitle extends StatelessWidget {
   const CustomTitle({

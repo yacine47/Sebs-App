@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sebs_app/core/utils/colors.dart';
+import 'package:sebs_app/core/utils/app_colors.dart';
 
 class CircleButton extends StatelessWidget {
   final IconData icon;

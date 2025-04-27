@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sebs_app/core/models/event_model.dart';
-import 'package:sebs_app/core/utils/colors.dart';
+import 'package:sebs_app/core/utils/app_colors.dart';
 import 'package:sebs_app/features/booking/presentation/views/widgets/custom_clipper_ticket.dart';
 import 'package:sebs_app/features/booking/presentation/views/widgets/custom_dashed_line.dart';
 import 'package:sebs_app/features/booking/presentation/views/widgets/custom_image_cover_ticket.dart';

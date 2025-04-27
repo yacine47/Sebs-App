@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sebs_app/core/models/event_model.dart';
-import 'package:sebs_app/core/utils/colors.dart';
+import 'package:sebs_app/core/utils/app_colors.dart';
 import 'package:sebs_app/features/booking/presentation/views/ticket_view.dart';
 
 class BottomBarDetailsView extends StatelessWidget {
