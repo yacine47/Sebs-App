@@ -12,7 +12,7 @@ class ErrMessageWidgetAuth extends StatelessWidget {
         ? Align(
             child: Text(
               state.errMessage,
-              style: Styles.style14.copyWith(color: Colors.red),
+              style: AppStyles.style14.copyWith(color: Colors.red),
             ),
           )
         : const SizedBox();

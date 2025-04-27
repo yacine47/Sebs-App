@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter/services.dart';
+import 'package:sebs_app/constants.dart';
 import 'package:sebs_app/core/models/category_model.dart';
 import 'package:sebs_app/core/models/review_model.dart';
 
@@ -39,7 +40,7 @@ class EventModel extends Equatable {
   final String? location;
   final int? eventManagerId;
   final int? limitNumber;
-  final int? averageRating;
+  final num? averageRating;
   final DateTime? createdAt;
   final DateTime? updatedAt;
   final CategoryModel? category;
@@ -56,7 +57,7 @@ class EventModel extends Equatable {
       endTime: json["end_time"],
       categoryId: json["category_id"],
       status: json["status"],
-      image: json["image"],
+      image: kBaseUrlStorage + json["image"],
       location: json["location"],
       eventManagerId: json["event_manager_id"],
       limitNumber: json["limit_number"],
@@ -119,4 +120,56 @@ class EventModel extends Equatable {
         eventManager,
         reviews,
       ];
+
+  static EventModel fakeEventModel = EventModel(
+    id: 1,
+    title: 'Sample Event',
+    description: 'This is a sample event description.',
+    date: DateTime(2025, 2, 12), // Feb 12
+    startTime: '10:00 AM',
+    endTime: '12:00 PM',
+    categoryId: 5,
+    status: 'active',
+    image: '${kBaseUrlStorage}images/sample_event.jpg',
+    location: 'New York City',
+    eventManagerId: 3,
+    limitNumber: 100,
+    averageRating: 4.5,
+    createdAt: DateTime.now(),
+    updatedAt: DateTime.now(),
+    category: CategoryModel(
+      id: 5,
+      name: 'Music',
+      createdAt: DateTime.now(),
+      updatedAt: DateTime.now(),
+      userId: 7,
+    ),
+    eventManager: CategoryModel(
+      id: 3,
+      name: 'John Doe',
+      createdAt: DateTime.now(),
+      updatedAt: DateTime.now(),
+      userId: 2,
+    ),
+    reviews: [
+      ReviewModel(
+        id: 1,
+        simpleUserId: 10,
+        eventId: 1,
+        rating: 5,
+        comment: 'Amazing event!',
+        createdAt: DateTime.now(),
+        updatedAt: DateTime.now(),
+      ),
+      ReviewModel(
+        id: 2,
+        simpleUserId: 11,
+        eventId: 1,
+        rating: 4,
+        comment: 'Had a great time.',
+        createdAt: DateTime.now(),
+        updatedAt: DateTime.now(),
+      ),
+    ],
+  );
 }

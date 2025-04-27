@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:sebs_app/core/models/event_model.dart';
 import 'package:sebs_app/core/utils/app_colors.dart';
+import 'package:sebs_app/core/widgets/custom_cached_network_image.dart';
 
 class ImageCoverCard extends StatelessWidget {
   const ImageCoverCard({super.key, required this.eventModel});
@@ -21,14 +23,9 @@ class ImageCoverCard extends StatelessWidget {
           width: double.infinity,
           height: 310,
           margin: const EdgeInsets.only(top: 10, left: 10, right: 10),
-          decoration: BoxDecoration(
+          child: CustomCachedNetworkImage(
             borderRadius: BorderRadius.circular(16),
-            image: DecorationImage(
-              fit: BoxFit.cover,
-              image: NetworkImage(
-                eventModel.image!,
-              ),
-            ),
+            imageUrl: eventModel.image!,
           ),
         ),
         Positioned(
@@ -45,10 +42,14 @@ class ImageCoverCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  eventModel.date.toString(),
+                  DateFormat('MMM').format(eventModel.date!),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                 ),
                 Text(
-                  eventModel.date.toString(),
+                  DateFormat('dd').format(eventModel.date!),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                   style: const TextStyle(
                     color: AppColors.primaryColor,
                   ),

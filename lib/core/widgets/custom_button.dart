@@ -31,7 +31,7 @@ class CustomButton extends StatelessWidget {
         child: isLoadingState == false
             ? Text(
                 title,
-                style: Styles.style16.copyWith(
+                style: AppStyles.style16.copyWith(
                   color: Colors.white,
                   fontWeight: FontWeight.w600,
                 ),
@@ -50,7 +50,7 @@ class CustomButton extends StatelessWidget {
                   const SizedBox(width: 16),
                   Text(
                     'Please Wait...',
-                    style: Styles.style16.copyWith(
+                    style: AppStyles.style16.copyWith(
                       color: Colors.white,
                       fontWeight: FontWeight.w600,
                     ),

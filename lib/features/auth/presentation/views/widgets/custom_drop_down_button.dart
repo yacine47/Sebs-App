@@ -30,7 +30,7 @@ class CustomDropDownButton extends StatelessWidget {
         dropdownColor: AppColors.textFieldColor,
         hint: Text(
           'Select Your Role',
-          style: Styles.style14,
+          style: AppStyles.style14,
         ),
         decoration: const InputDecoration(
           contentPadding: EdgeInsets.only(left: 16, right: 14),

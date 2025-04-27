@@ -1,28 +1,43 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:sebs_app/core/utils/app_colors.dart';
 import 'package:sebs_app/core/models/event_model.dart';
+import 'package:sebs_app/core/widgets/custom_cached_network_image.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 class CardPopularEvent extends StatelessWidget {
   final EventModel eventModel;
-
-  const CardPopularEvent({required this.eventModel, super.key});
+  final VoidCallback onTap;
+  final bool isLoading;
+  const CardPopularEvent({
+    required this.eventModel,
+    super.key,
+    required this.onTap,
+    required this.isLoading,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 250,
-      height: 270,
-      margin: const EdgeInsets.only(left: 8, right: 8),
-      child: Stack(
-        children: [
-          _buildCardImage(),
-          _buildCardDesc(),
-        ],
+    return Skeletonizer(
+      enabled: isLoading,
+      child: GestureDetector(
+        onTap: onTap,
+        child: Container(
+          width: 250,
+          height: 270,
+          margin: const EdgeInsets.only(left: 8, right: 8),
+          child: Stack(
+            children: [
+              _buildCardImage(),
+              _buildCardDesc(),
+            ],
+          ),
+        ),
       ),
     );
   }
 
-  Container _buildCardImage() => Container(
+  Widget _buildCardImage() => Container(
         width: 250,
         height: 250,
         padding: const EdgeInsets.all(10),
@@ -34,11 +49,8 @@ class CardPopularEvent extends StatelessWidget {
           borderRadius: BorderRadius.circular(16),
           child: Stack(
             children: [
-              Image.network(
-                eventModel.image!,
-                fit: BoxFit.cover,
-                width: double.infinity,
-                height: double.infinity,
+              CustomCachedNetworkImage(
+                imageUrl: eventModel.image!,
               ),
               Positioned(
                 right: 8,
@@ -54,10 +66,14 @@ class CardPopularEvent extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        eventModel.date.toString(),
+                        DateFormat('MMM').format(eventModel.date!),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                       ),
                       Text(
-                        eventModel.date.toString(),
+                        DateFormat('dd').format(eventModel.date!),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                         style: const TextStyle(
                           color: AppColors.primaryColor,
                         ),
@@ -83,45 +99,53 @@ class CardPopularEvent extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    eventModel.title!,
-                    style: const TextStyle(fontWeight: FontWeight.w500),
-                  ),
-                  const SizedBox(height: 6),
-                  Row(
-                    children: [
-                      const Icon(
-                        Icons.place_outlined,
-                        size: 14,
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      eventModel.title!,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(fontWeight: FontWeight.w500),
+                    ),
+                    const SizedBox(height: 6),
+                    Expanded(
+                      child: Row(
+                        children: [
+                          const Icon(
+                            Icons.place_outlined,
+                            size: 14,
+                          ),
+                          const SizedBox(width: 4),
+                          Text(
+                            eventModel.location!,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: const TextStyle(
+                              fontSize: 12,
+                              color: AppColors.greyTextColor,
+                            ),
+                          )
+                        ],
                       ),
-                      const SizedBox(width: 4),
-                      Text(
-                        eventModel.location!,
-                        style: const TextStyle(
-                          fontSize: 12,
-                          color: AppColors.greyTextColor,
-                        ),
-                      )
-                    ],
-                  )
-                ],
+                    )
+                  ],
+                ),
               ),
-              Container(
-                width: 30,
-                height: 30,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  color: AppColors.primaryLightColor,
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: const Icon(
-                  Icons.place_outlined,
-                  size: 18,
-                ),
-              )
+              // Container(
+              //   width: 30,
+              //   height: 30,
+              //   alignment: Alignment.center,
+              //   decoration: BoxDecoration(
+              //     color: AppColors.primaryLightColor,
+              //     borderRadius: BorderRadius.circular(8),
+              //   ),
+              //   child: const Icon(
+              //     Icons.place_outlined,
+              //     size: 18,
+              //   ),
+              // )
             ],
           ),
         ),

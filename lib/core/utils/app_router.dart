@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:sebs_app/core/models/event_model.dart';
 import 'package:sebs_app/core/utils/service_locator.dart';
 import 'package:sebs_app/features/auth/data/repos/auth_repo_impl.dart';
 import 'package:sebs_app/features/auth/presentation/view_models/login/login_cubit.dart';
@@ -48,13 +49,13 @@ abstract class AppRouter {
       GoRoute(
         path: EventDetailsView.path,
         builder: (context, state) => EventDetailsView(
-          eventData: state.extra as Map<String, dynamic>,
+          eventModel: state.extra as EventModel,
         ),
       ),
       GoRoute(
         path: TicketView.path,
         builder: (context, state) => TicketView(
-          eventData: state.extra as Map<String, dynamic>,
+          eventModel: state.extra as EventModel,
         ),
       ),
     ],

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-abstract class Styles {
+abstract class AppStyles {
   static TextStyle style10 = const TextStyle(
     fontSize: 10,
     fontWeight: FontWeight.w600,
@@ -22,7 +22,6 @@ abstract class Styles {
 
   static TextStyle style16 = const TextStyle(
     fontSize: 16,
-    color: Colors.white,
     fontWeight: FontWeight.w500,
   );
 

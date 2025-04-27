@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sebs_app/core/utils/app_colors.dart';
+import 'package:sebs_app/core/widgets/app_styles.dart';
 
 class TitleValueCard extends StatelessWidget {
   final String title;
@@ -11,19 +12,30 @@ class TitleValueCard extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          title,
-          style: const TextStyle(fontSize: 12, color: AppColors.greyTextColor),
-        ),
-        const SizedBox(height: 2),
-        Text(
-          value,
-          style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
-        ),
-      ],
+    return Expanded(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            title,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: AppStyles.style12.copyWith(
+              fontSize: 12,
+              color: AppColors.greyTextColor,
+            ),
+          ),
+          const SizedBox(height: 2),
+          Text(
+            value,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: AppStyles.style16.copyWith(
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

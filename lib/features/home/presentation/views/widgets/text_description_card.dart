@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sebs_app/core/models/event_model.dart';
 import 'package:sebs_app/core/utils/app_colors.dart';
-import 'package:sebs_app/core/widgets/stack_participant.dart';
+import 'package:sebs_app/core/widgets/custom_rating_bar.dart';
+import 'package:sebs_app/core/widgets/custom_read_more.dart';
 
 class TextDescriptionCard extends StatelessWidget {
   const TextDescriptionCard({super.key, required this.eventModel});
@@ -57,14 +58,32 @@ class TextDescriptionCard extends StatelessWidget {
               )
             ],
           ),
-          const SizedBox(height: 16),
-          const StackParticipant(
-            fontSize: 14,
-            width: 30,
-            height: 30,
-            positionText: 100,
+          const SizedBox(height: 24),
+
+          Row(
+            children: [
+              CustomRatingBar(
+                itemSize: 24,
+                rating: eventModel.averageRating!.toDouble(),
+              ),
+              const SizedBox(width: 8),
+              Text(
+                eventModel.averageRating!.toDouble().toString(),
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ],
           ),
-          const SizedBox(height: 16),
+          // const SizedBox(height: 16),
+          // const StackParticipant(
+          //   fontSize: 14,
+          //   width: 30,
+          //   height: 30,
+          //   positionText: 100,
+          // ),
+          const SizedBox(height: 24),
           const Text(
             "Description",
             style: TextStyle(
@@ -73,25 +92,12 @@ class TextDescriptionCard extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 6),
-          RichText(
-            textAlign: TextAlign.justify,
-            text: TextSpan(
-              text: eventModel.description,
-              style: const TextStyle(
-                color: AppColors.greyTextColor,
-                fontSize: 12,
-                height: 1.75,
-              ),
-              children: const [
-                TextSpan(
-                  text: "Read More...",
-                  style: TextStyle(
-                    color: AppColors.primaryColor,
-                  ),
-                )
-              ],
-            ),
+
+          CustomReadMore(
+            text: eventModel.description!,
+            isLoading: false,
           ),
+
           const SizedBox(height: 64),
         ],
       ),

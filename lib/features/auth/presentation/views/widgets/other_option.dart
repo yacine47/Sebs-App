@@ -14,7 +14,7 @@ class OtherOption extends StatelessWidget {
       child: RichText(
         text: TextSpan(
             text: '$text  ',
-            style: Styles.style14.copyWith(
+            style: AppStyles.style14.copyWith(
               color: AppColors.blackTextColor,
               fontWeight: FontWeight.w400,
             ),
@@ -22,7 +22,7 @@ class OtherOption extends StatelessWidget {
               TextSpan(
                 text: ' $buttonText',
                 recognizer: TapGestureRecognizer()..onTap = onTap,
-                style: Styles.style14.copyWith(
+                style: AppStyles.style14.copyWith(
                   color: AppColors.primaryColor,
                   fontWeight: FontWeight.w600,
                 ),

@@ -44,7 +44,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 const SizedBox(height: 24),
                 Text(
                   'Sign in to your Account',
-                  style: Styles.style40,
+                  style: AppStyles.style40,
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height * .07),
                 ErrMessageWidgetAuth(

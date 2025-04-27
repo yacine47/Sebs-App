@@ -4,7 +4,7 @@ import 'package:sebs_app/core/services/secure_storage_service.dart';
 import 'package:sebs_app/core/utils/service_locator.dart';
 
 class ApiService {
-  final String baseUrl = kBaseUrl;
+  final String baseUrl = kBaseApiUrl;
   final Dio _dio;
   final String contentType = 'application/json';
   final String accept = 'application/json';

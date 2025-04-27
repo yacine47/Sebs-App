@@ -16,11 +16,11 @@ class HomeRepoImpl implements HomeRepo {
   Future<Either<Failure, List<EventModel>>> fetchDataPopularEvents() async {
     try {
       final Map<String, dynamic> response = await apiService.get(
-        endPoint: 'events',
+        endPoint: 'popular-events',
       );
       final List<EventModel> events = [];
-
-      for (var evnet in response['data']) {
+      final List<dynamic> data = response['popular_events']['data'];
+      for (var evnet in data) {
         events.add(EventModel.fromJson(evnet));
       }
 
@@ -37,11 +37,12 @@ class HomeRepoImpl implements HomeRepo {
   Future<Either<Failure, List<EventModel>>> fetchDataLastMonth() async {
     try {
       final Map<String, dynamic> response = await apiService.get(
-        endPoint: 'events',
+        endPoint: 'last-month-events',
       );
       final List<EventModel> events = [];
+      final List<dynamic> data = response['last_month_events']['data'];
 
-      for (var evnet in response['data']) {
+      for (var evnet in data) {
         events.add(EventModel.fromJson(evnet));
       }
 

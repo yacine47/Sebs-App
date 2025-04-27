@@ -52,7 +52,7 @@ class BottomBarDetailsView extends StatelessWidget {
             ElevatedButton(
               onPressed: () => GoRouter.of(context).push(
                 TicketView.path,
-                extra: eventModel.toJson(),
+                extra: eventModel,
               ),
               style: ElevatedButton.styleFrom(
                   backgroundColor: AppColors.primaryColor,
@@ -62,7 +62,10 @@ class BottomBarDetailsView extends StatelessWidget {
                   maximumSize: const Size(200, 150)),
               child: const Text(
                 "Get a Ticket",
-                style: TextStyle(color: AppColors.whiteColor, fontSize: 16),
+                style: TextStyle(
+                  color: AppColors.whiteColor,
+                  fontSize: 16,
+                ),
               ),
             )
           ],
