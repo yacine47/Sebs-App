@@ -4,7 +4,6 @@ import 'package:sebs_app/core/utils/app_colors.dart';
 import 'package:sebs_app/core/models/event_model.dart';
 import 'package:sebs_app/core/widgets/custom_cached_network_image.dart';
 import 'package:sebs_app/core/widgets/custom_rating_bar.dart';
-import 'package:sebs_app/features/home/presentation/views/widgets/stack_participant.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class CardEventThisMonth extends StatelessWidget {
@@ -35,13 +34,17 @@ class CardEventThisMonth extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
-                width: 60,
-                height: double.infinity,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(12),
-                  child: CustomCachedNetworkImage(
-                    imageUrl: eventModel.image!,
+              Hero(
+                transitionOnUserGestures: true,
+                tag: eventModel.image!,
+                child: SizedBox(
+                  width: 60,
+                  height: double.infinity,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(12),
+                    child: CustomCachedNetworkImage(
+                      imageUrl: eventModel.image!,
+                    ),
                   ),
                 ),
               ),
@@ -68,10 +71,11 @@ class CardEventThisMonth extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 4),
-                  CustomRatingBar(
-                    itemSize: 16,
-                    rating: eventModel.averageRating!.toDouble(),
-                  ),
+                  if (!isLoading)
+                    CustomRatingBar(
+                      itemSize: 16,
+                      rating: eventModel.averageRating!.toDouble(),
+                    ),
                   // const Expanded(
                   //   child: StackParticipant(
                   //     width: 25,

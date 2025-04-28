@@ -48,9 +48,9 @@ class TextDescriptionCard extends StatelessWidget {
                   color: AppColors.primaryLightColor,
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: const Text(
-                  "\$100",
-                  style: TextStyle(
+                child: Text(
+                  "\$${eventModel.price}",
+                  style: const TextStyle(
                     color: AppColors.primaryColor,
                     fontWeight: FontWeight.w500,
                   ),

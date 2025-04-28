@@ -49,8 +49,12 @@ class CardPopularEvent extends StatelessWidget {
           borderRadius: BorderRadius.circular(16),
           child: Stack(
             children: [
-              CustomCachedNetworkImage(
-                imageUrl: eventModel.image!,
+              Hero(
+                transitionOnUserGestures: true,
+                tag: eventModel.image!,
+                child: CustomCachedNetworkImage(
+                  imageUrl: eventModel.image!,
+                ),
               ),
               Positioned(
                 right: 8,

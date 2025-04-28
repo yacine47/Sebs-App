@@ -26,6 +26,7 @@ class EventModel extends Equatable {
     required this.category,
     required this.eventManager,
     required this.reviews,
+    required this.price,
   });
 
   final int? id;
@@ -38,6 +39,7 @@ class EventModel extends Equatable {
   final String? status;
   final String? image;
   final String? location;
+  final String? price;
   final int? eventManagerId;
   final int? limitNumber;
   final num? averageRating;
@@ -59,6 +61,7 @@ class EventModel extends Equatable {
       status: json["status"],
       image: kBaseUrlStorage + json["image"],
       location: json["location"],
+      price: json["price"],
       eventManagerId: json["event_manager_id"],
       limitNumber: json["limit_number"],
       averageRating: json["average_rating"],
@@ -135,6 +138,7 @@ class EventModel extends Equatable {
     eventManagerId: 3,
     limitNumber: 100,
     averageRating: 4.5,
+    price: '100',
     createdAt: DateTime.now(),
     updatedAt: DateTime.now(),
     category: CategoryModel(

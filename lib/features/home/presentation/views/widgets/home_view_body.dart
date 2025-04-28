@@ -28,7 +28,7 @@ class HomeViewBody extends StatelessWidget {
           BlocBuilder<GetPopularEventCubit, GetPopularEventState>(
             builder: (context, state) {
               return PopularEventCardListView(
-                isLoading: state is GetPopularEventLoading,
+                isLoading: state is! GetPopularEventSuccess,
                 events: state is GetPopularEventSuccess
                     ? state.events
                     : List<EventModel>.filled(
@@ -47,7 +47,7 @@ class HomeViewBody extends StatelessWidget {
           BlocBuilder<GetLastMonthEventCubit, GetLastMonthEventState>(
             builder: (context, state) {
               return EventThisMonthCardListView(
-                isLoading: state is GetLastMonthEventLoading,
+                isLoading: state is! GetLastMonthEventSuccess,
                 events: state is GetLastMonthEventSuccess
                     ? state.events
                     : List<EventModel>.filled(

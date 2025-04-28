@@ -19,13 +19,17 @@ class ImageCoverCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(16),
           ),
         ),
-        Container(
-          width: double.infinity,
-          height: 310,
-          margin: const EdgeInsets.only(top: 10, left: 10, right: 10),
-          child: CustomCachedNetworkImage(
-            borderRadius: BorderRadius.circular(16),
-            imageUrl: eventModel.image!,
+        Hero(
+          transitionOnUserGestures: true,
+          tag: eventModel.image!,
+          child: Container(
+            width: double.infinity,
+            height: 310,
+            margin: const EdgeInsets.only(top: 10, left: 10, right: 10),
+            child: CustomCachedNetworkImage(
+              borderRadius: BorderRadius.circular(16),
+              imageUrl: eventModel.image!,
+            ),
           ),
         ),
         Positioned(
